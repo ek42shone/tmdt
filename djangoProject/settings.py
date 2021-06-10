@@ -15,7 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -60,8 +61,7 @@ ROOT_URLCONF = 'djangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templatesAdmin', BASE_DIR/ 'template']
-        ,
+        'DIRS': [BASE_DIR / 'templatesAdmin', BASE_DIR / 'template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,7 +94,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL='staff.User'
+AUTH_USER_MODEL = 'staff.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -132,8 +132,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # STATIC_ROOT = 'staticAdmin'
-
-STATICFILES_DIRS=[
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "template")
 ]
 
