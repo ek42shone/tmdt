@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 
 from .models import StorageStaff, Fullname, Product
 
-
+from PIL import Image
 # Create your views here.
+
+
 def list_staff(request):
     staffs = StorageStaff.objects.all()
     return render(request, 'staffs.html', {'staffs': staffs})
@@ -23,7 +25,8 @@ def get_products(request):
         product = Product.objects.all()
         return render(request, 'products.html', {'products': product})
     else:
-        products = Product.objects.filter(name__icontains=request.POST['product_search'])
+        products = Product.objects.filter(
+            name__icontains=request.POST['product_search'])
         return render(request, 'products.html', {'products': products})
 
 

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
+from PIL import Image
 # Create your views here.
 from django.utils.crypto import get_random_string
 
@@ -20,8 +20,6 @@ def add_to_cart(request, id):
     current_user = request.user  # Access User Session information
     item = Item.objects.get(pk=id)
 
-
-
     cart = Cart.objects.get(user=current_user)
     checkinvariant = ItemInCart.objects.filter(cart=cart,
                                                item=item)  # Check product in shopcart
@@ -34,7 +32,8 @@ def add_to_cart(request, id):
         form = ItemInCartForm(request.POST)
         if form.is_valid():
             if control == 1:  # Update  shopcart
-                data = ItemInCart.objects.get(item_id=id, user_id=current_user.id)
+                data = ItemInCart.objects.get(
+                    item_id=id, user_id=current_user.id)
                 data.quantity += form.cleaned_data['quantity']
                 data.save()  # save data
             else:  # Inser to Shopcart
@@ -98,7 +97,8 @@ def order_item(request):
         # ..............
         payment = Payment(amount=total, additionalFee=0)
         payment.save()
-        order = Order(saleOff=0, payment=payment, customer=current_user, status_id=1)
+        order = Order(saleOff=0, payment=payment,
+                      customer=current_user, status_id=1)
         order.save()  #
 
         # TODO : Remove from ProductInStock
