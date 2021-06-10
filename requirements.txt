@@ -4,3 +4,5 @@ fastapi==0.63.0
 bootstrap-admin==0.4.4
 mysql-connector-python==8.0.17
 mysqlclient==2.0.3
+Pillow==8.2.0
+#pip3 install -r requirements.txt
