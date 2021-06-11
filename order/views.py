@@ -1,19 +1,22 @@
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+
+# from django.contrib import messages
+# from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from PIL import Image
-# Create your views here.
-from django.utils.crypto import get_random_string
+# from django.shortcuts import render
+# from PIL import Image
+# # Create your views here.
+# from django.utils.crypto import get_random_string
 
-from order.forms import ItemInCartForm, OrderForm
-from staff.models import *
+#from order.forms import ItemInCartForm, OrderForm
+#from staff.models import *
 
 
 def index(request):
-    return HttpResponse("Order Page")
+    return render(request, 'homebase.html')
 
 
+'''
 @login_required(login_url='/login')  # Check login
 def add_to_cart(request, id):
     url = request.META.get('HTTP_REFERER')  # get last url
@@ -109,3 +112,4 @@ def order_item(request):
                'total': total,
                }
     return render(request, 'order_Form.html', context)
+'''

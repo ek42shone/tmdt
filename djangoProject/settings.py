@@ -39,9 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'staff',
-    'my_app',
-    'website'
 ]
 BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
@@ -90,12 +87,17 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-'''
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL = 'staff.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -1,16 +1,7 @@
-from django.contrib.auth.models import User
-from django.db import models
+# from django.contrib.auth.models import User
+# from django.db import models
 
-# Create your models here.
-from django.forms import ModelForm
+# # Create your models here.
+# from django.forms import ModelForm
 
-from staff.models import Product
-
-
-
-
-
-
-
-
-
+# from staff.models import Product
